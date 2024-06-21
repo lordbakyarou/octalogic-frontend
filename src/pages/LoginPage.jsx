@@ -42,6 +42,11 @@ const LoginPage = () => {
           loginId: loginInUser.loginId,
           password: loginInUser.password,
         },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
       );
 
