@@ -52,7 +52,7 @@ const SignupPage = () => {
 
     try {
       const createdUser = await axios.post(
-        `https://octalogic-backend.vercel.app/auth/login`,
+        `https://octalogic-backend.vercel.app/auth/signup`,
         {
           username: signupUser.username,
           email: signupUser.email,
