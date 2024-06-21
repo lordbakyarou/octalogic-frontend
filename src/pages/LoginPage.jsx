@@ -41,7 +41,8 @@ const LoginPage = () => {
         {
           loginId: loginInUser.loginId,
           password: loginInUser.password,
-        }
+        },
+        { withCredentials: true }
       );
 
       console.log(loggedInUser.data);
