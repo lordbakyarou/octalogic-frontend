@@ -8,6 +8,8 @@ import { BsArrowClockwise } from "react-icons/bs";
 import { FaEye, FaEyeSlash, FaFacebookSquare } from "react-icons/fa";
 import loginImage from "../assets/login-image.jpg";
 
+import { FaRegUser } from "react-icons/fa";
+
 import { useDispatch } from "react-redux";
 import { addToken } from "@/redux/features/user/userTokenSlice";
 
@@ -62,16 +64,30 @@ const LoginPage = () => {
     }
   }
 
-  // useEffect(() => {
-  //   async function checkIfUserAlreadyLoggedin() {
-  //     try {
-  //       await axios.get(`${URL}/auth/check`, { withCredentials: true });
-  //       navigate("/dashboard");
-  //     } catch (error) {}
-  //   }
-
-  //   checkIfUserAlreadyLoggedin();
-  // }, []);
+  async function recruiterLogin() {
+    try {
+      const loggedInUser = await axios.post(
+        `${URL}/auth/login`,
+        {
+          loginId: "mayur1710hanwate@gmail.com",
+          password: "Mayur@123",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+        { withCredentials: true }
+      );
+      dispatch(addToken({ token: loggedInUser.data }));
+      setIsLoading(false);
+      navigate("/home");
+    } catch (error) {
+      setUserCreationError(error.response?.data);
+      setIsLoading(false);
+      console.log(error);
+    }
+  }
 
   return (
     <div className="flex justify-evenly gap-10 px-10 max-md:flex-col-reverse">
@@ -138,9 +154,7 @@ const LoginPage = () => {
                   </div>
                 )}
               </div>
-              <div className="flex justify-end cursor-pointer text-blue-400 text-sm font-semibold">
-                <span>Forgot password?</span>
-              </div>
+
               <div className="login-button">
                 <button
                   className={`w-80 cursor-pointer  h-10 border rounded-lg
@@ -182,6 +196,15 @@ const LoginPage = () => {
               <img src={googleAuth} width={20} />
               <span className="text-blue-900 font-semibold cursor-pointer">
                 Sign in with google
+              </span>
+            </div>
+            <div
+              className="flex justify-center items-center gap-2 rounded p-2 bg-light-blue "
+              onClick={recruiterLogin}
+            >
+              <FaRegUser />
+              <span className="text-blue-900 font-semibold cursor-pointer">
+                Quick Login for Recruiters
               </span>
             </div>
             <div className="flex items-center justify-center p-5 gap-1">
