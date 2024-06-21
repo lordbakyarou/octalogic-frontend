@@ -37,12 +37,11 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const loggedInUser = await axios.post(
-        `${URL}/auth/login`,
+        `https://octalogic-backend.vercel.app/auth/login`,
         {
           loginId: loginInUser.loginId,
           password: loginInUser.password,
-        },
-        { withCredentials: true }
+        }
       );
 
       console.log(loggedInUser.data);
