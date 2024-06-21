@@ -19,13 +19,19 @@ const SideNavbar = () => {
   }
 
   return (
-    <div>
+    <div className="">
       <button
         data-drawer-target="logo-sidebar"
         data-drawer-toggle="logo-sidebar"
         aria-controls="logo-sidebar"
         type="button"
-        className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:text-gray-500 focus:outline-none  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        onClick={(e) => {
+          e.stopPropagation();
+          document
+            .getElementById("logo-sidebar")
+            .classList.toggle("-translate-x-full");
+        }}
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -44,12 +50,19 @@ const SideNavbar = () => {
       </button>
       <aside
         id="logo-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        className="fixed top-15 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-white"
         aria-label="Sidebar"
+        onClick={(e) => {
+          e.stopPropagation();
+          document
+            .getElementById("logo-sidebar")
+            .classList.remove("-translate-x-full");
+          // console.log(document.getElementById("logo-sidebar").classList);
+        }}
       >
         <div className="h-full px-3 py-4 overflow-y-auto shadow-xl">
           <a
-            href="change It to local"
+            href="/home"
             className="flex items-center ps-2.5 mb-5 justify-center"
           >
             <img src={logo} className="h-12 me-3 sm:h-16" alt="Logo" />

@@ -65,6 +65,7 @@ const LoginPage = () => {
   }
 
   async function recruiterLogin() {
+    setIsLoading(true);
     try {
       const loggedInUser = await axios.post(
         `https://octalogic-backend.vercel.app/auth/login`,

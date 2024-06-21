@@ -21,7 +21,7 @@ const Course = () => {
     <div className="flex flex-col gap-10 h-fit bg-gray-100">
       <h1 className="course text-4xl font-semibold text-gray-500">Courses</h1>
       <div className="course-list"></div>
-      <div className="flex justify-between">
+      <div className="flex justify-between max-[425px]:flex-col">
         <h3 className="uppercase font-semibold text-2xl text-gray-400">
           Course list
         </h3>
@@ -32,7 +32,7 @@ const Course = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search..."
-            className="pl-10 pr-4 py-2 border border-gray-300 rounded w-full bg-white"
+            className="pl-7 py-2 border border-gray-300 rounded w-full bg-white"
           />
         </div>
       </div>
