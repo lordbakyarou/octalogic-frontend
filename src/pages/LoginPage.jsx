@@ -39,7 +39,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const loggedInUser = await axios.post(
-        `${URL}/auth/login`,
+        `https://octalogic-backend.vercel.app/auth/login`,
         {
           loginId: loginInUser.loginId,
           password: loginInUser.password,
@@ -67,7 +67,7 @@ const LoginPage = () => {
   async function recruiterLogin() {
     try {
       const loggedInUser = await axios.post(
-        `${URL}/auth/login`,
+        `https://octalogic-backend.vercel.app/auth/login`,
         {
           loginId: "mayur1710hanwate@gmail.com",
           password: "Mayur@123",
